@@ -18,10 +18,13 @@ public class Main {
         String apiUri = "http://dummy.restapiexample.com/api/v1/employees";
         //String paramString = "someParameterString";
 
+        //Client is Executed for REST Call
         HttpClient client = HttpClients.createDefault();
 
         try {
+            //Build Appropriate URI using Apache Utils
             URIBuilder builder = new URIBuilder(apiUri);
+            //Request Params can be added if required.
             //builder.addParameter('paramName', paramString);
 
             //Build URI After adding Parameters
@@ -29,18 +32,20 @@ public class Main {
             //For GET Method: HttpGet
             HttpGet httpGet = new HttpGet(builtUri);
 
-            //Execute REST Call
+            //Execute client for REST Call
             HttpResponse httpResponse = client.execute(httpGet);
 
             //Check StatusCode for Success (200)
             int statusCode = httpResponse.getStatusLine().getStatusCode();
             if (statusCode < 200 || statusCode >= 300) {
                 //Handle Status Code other than 2XX here
+                System.out.println("Request Did Not Succeed");
                 return;
             }
             //Get Response Body
             String responseBody = EntityUtils.toString(httpResponse.getEntity());
 
+            //Print/ Return Response
             System.out.println("Response:\n" + responseBody);
 
         }
