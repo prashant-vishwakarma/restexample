@@ -98,7 +98,7 @@ public class Main {
 
             //Build URI After adding Parameters
             String builtUri = builder.build().toString();
-            //For GET Method: HttpGet
+            //For Post Method: HttpPost
             HttpPost httpPost = new HttpPost(builtUri);
             //Add Headers to Post Request
             //httpPost.addHeader(HttpHeaders.ACCEPT, "application/json");
